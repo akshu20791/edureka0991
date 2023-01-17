@@ -1,0 +1,30 @@
+vi index.html 
+hello world
+press esc :wq
+
+vi task.yml
+
+--- #task and target playbook
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+    pkgname: httpd
+    sftname: git
+  tasks:
+         - name: Install httpd on linux
+           action: yum name='{{pkgname}}' state=installed
+         - name: Install software on linux
+           action: yum name='{{sftname}}' state=installed
+           notify: akshat start the httpd after installation
+         - name: copy the index file from ansible server to node
+           ansible.builtin.copy:
+              src: /home/ansible/index.html
+              dest: /var/www/html/index.html
+  handlers:
+         - name: akshat start the httpd after installation
+           action: service name='{{pkgname}}' state=restarted
+
+
+ansible-playbook task.yml
