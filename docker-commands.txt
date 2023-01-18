@@ -1,0 +1,40 @@
+1) sudo su
+
+2) yum install docker -y
+
+3) service docker start
+
+4) docker pull nginx   (if you want to pull image from dockerhub)
+
+5) docker run -it --name akshat ubuntu /bin/bash  
+(create a container with name akshat and base image as ubuntu ) 
+
+you will enter inside the container
+
+touch file1
+ls
+cat /etc/os-release  (to the os of your container)
+exit
+
+(you will be out of the container)
+
+6) docker start akshat
+
+7) docker ps   (show all the running process-container) 
+
+8) docker ps -a (show all the process containers)
+
+9) docker attach akshat
+
+(you will again enter inside the container. please take of one thing that container need to be started)
+
+you will be inside the container
+
+ls
+to quit the container without stopping it ...first prss ctrl P and then ctrl Q 
+
+10) docker ps   (to check if you have quit the container w/o stopping ) 
+
+11) docker stop akshat
+
+12) docker rm akshat (delete the container)  
